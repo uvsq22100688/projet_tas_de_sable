@@ -18,27 +18,27 @@ grille = 20
 grille1 = grille -1
 tc = HEIGHT //grille
 obj = []
-cases = grille*grille+1
+xcases = grille*grille+1
 liste_couleurs = ["midnightblue","mediumblue","royalblue","cornflowerblue","skyblue"]
 cond = True
 color = "powderblue"
 l3 = [[0,0,0]]
 
 def carre():
-    for i in range(1,cases):
-        if l3[i][2] >=5:
+    for v in range(1,xcases):
+        if l3[v][2] >=5:
             color = "midnightblue"
-        if l3[i][2] == 4:
+        if l3[v][2] == 4:
             color = "mediumblue"
-        if l3[i][2] == 3:
+        if l3[v][2] == 3:
             color = "royalblue"
-        if l3[i][2] == 2:
+        if l3[v][2] == 2:
             color = "cornflowerblue"
-        if l3[i][2] == 1:
+        if l3[v][2] == 1:
             color = "skyblue"
-        if l3[i][2] == 0 :
+        if l3[v][2] == 0 :
             color = "powderblue"
-        obj.append(canvas.create_rectangle((l3[i][0]*tc,0+tc*l3[i][1]),(tc+l3[i][0]*tc,tc+tc*l3[i][1]),fill = color,outline = color ))
+        obj.append(canvas.create_rectangle((l3[v][0]*tc,0+tc*l3[v][1]),(tc+l3[v][0]*tc,tc+tc*l3[v][1]),fill = color,outline = color ))
 
 
 def sauvegarde():
@@ -60,14 +60,14 @@ def affiche_sauvegarde():
 
 def config_aleatoire():
     global l3
-    for i in range (1,cases):
+    for i in range (1,xcases):
         l3[i][2] = random.randint(1,4)
     carre()
 
 def pile_centrée():
     global l3,obj
     case = (grille*grille)//2 - grille//2
-    for i in range(1, cases):
+    for i in range(1, xcases):
         l3[i][2]= 0
     l3[case][2] = 700
     carre()
@@ -76,17 +76,18 @@ def pile_centrée():
 
 def max_stable():
     global l3, obj
-    for i in range(1,cases):
+    for i in range(1,xcases):
         l3[i][2] = 6
-    for i in range(1,cases):
+    for i in range(1,xcases):
         color = "royalblue"
         obj.append(canvas.create_rectangle((l3[i][0]*tc,0+tc*l3[i][1]),(tc+l3[i][0]*tc,tc+tc*l3[i][1]),fill = color,outline = color))
 
 
 def clic_config(event):
     global l3,obj
-    for i in range(1,cases):
+    for i in range(1,xcases):
         if tc*l3[i][0] < event.x <tc+tc*l3[i][0] and tc*l3[i][1] < event.y< tc+tc*l3[i][1]:
+            l3[i][2]+=1
             print(l3)
             for c in range (len(obj)):
                 canvas.delete(obj[c])
@@ -101,57 +102,57 @@ def stop():
 def changement_config():
     global l3 , obj , cond
     l4 = copy.deepcopy(l3)
-    for i in range(1, cases):
-        if l4[i][0] == 0 and l4[i][1]==0 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i+1][2] +=1
-            l3[i+grille][2] +=1 
+    for v in range(1, xcases):
+        if l4[v][0] == 0 and l4[v][1]==0 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v+1][2] +=1
+            l3[v+grille][2] +=1 
 
-        elif l4[i][0] == grille1 and l4[i][1]==0 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-1][2] +=1
-            l3[i+grille][2] +=1 
+        elif l4[v][0] == grille1 and l4[v][1]==0 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v-1][2] +=1
+            l3[v+grille][2] +=1 
 
-        elif l4[i][0] == 0 and l4[i][1]==grille1 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i+1][2] +=1
-            l3[i-grille][2] +=1 
+        elif l4[v][0] == 0 and l4[v][1]==grille1 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v+1][2] +=1
+            l3[v-grille][2] +=1 
 
-        elif l4[i][0] == grille1 and l4[i][1]==grille1 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-1][2] +=1
-            l3[i-grille][2] +=1 
+        elif l4[v][0] == grille1 and l4[v][1]==grille1 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v-1][2] +=1
+            l3[v-grille][2] +=1 
         
-        elif l4[i][0] == 0 and  l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-grille][2] +=1
-            l3[i+grille][2] +=1 
-            l3[i+1][2] +=1
+        elif l4[v][0] == 0 and  l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v-grille][2] +=1
+            l3[v+grille][2] +=1 
+            l3[v+1][2] +=1
 
-        elif l4[i][0] == grille1 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-grille][2] +=1
-            l3[i+grille][2] +=1 
-            l3 [i-1][2] +=1
+        elif l4[v][0] == grille1 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v-grille][2] +=1
+            l3[v+grille][2] +=1 
+            l3 [-1][2] +=1
 
-        elif l4[i][1]==0 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i+grille][2] +=1
-            l3[i-1][2] +=1
-            l3[i+1][2] +=1
+        elif l4[v][1]==0 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v+grille][2] +=1
+            l3[v-1][2] +=1
+            l3[v+1][2] +=1
 
-        elif l4[i][1]==grille1 and l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-grille][2] +=1
-            l3[i+1][2] +=1
-            l3[i-1][2] +=1
+        elif l4[v][1]==grille1 and l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v-grille][2] +=1
+            l3[v+1][2] +=1
+            l3[v-1][2] +=1
 
-        elif  l4[i][2] >=4:
-            l3[i][2] -= 4
-            l3[i-grille][2] +=1
-            l3[i+grille][2] +=1
-            l3[i+1][2] +=1
-            l3[i-1][2] +=1
+        elif  l4[v][2] >=4:
+            l3[v][2] -= 4
+            l3[v+grille][2] +=1
+            l3[v-grille][2] +=1
+            l3[v+1][2] +=1
+            l3[v-1][2] +=1
         for c in range(len(obj)):
             canvas.delete(obj[c])
         obj = []
@@ -200,7 +201,7 @@ for a in range(grille):
         l2.append(l2)
         obj.append(canvas.create_rectangle((v*tc,tc*a),(tc+v*tc,tc+a*tc), fill = color,outline = color))
 
-    racine.mainloop
+racine.mainloop()
 
 
 
