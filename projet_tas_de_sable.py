@@ -183,6 +183,7 @@ bouton4 = tk.Button(racine, text = "max stable", command=max_stable)
 bouton5 = tk.Button(racine, text = "enregistrer", command=sauvegarde)
 bouton6 = tk.Button(racine, text = "afficher sauvagarde", command=affiche_sauvegarde)
 bouton7 = tk.Button(racine, text = "stop", command = stop)
+bouton8 = tk.Button(racine,text = "identité", command = identité )
 bouton1.pack(side="top", fill = "x")
 bouton2.pack(side="top", fill = "x")
 bouton3.pack(side="top", fill = "x")
@@ -190,6 +191,8 @@ bouton4.pack(side="top", fill = "x")
 bouton5.pack(side="top", fill = "x")
 bouton6.pack(side="top", fill = "x")
 bouton7.pack(side="top", fill = "x")
+bouton8.pack(side="top", fill = "x")
+
 
 
 for j in range(grille): ##fonction créant des carrés contenant 0 grains de sable
