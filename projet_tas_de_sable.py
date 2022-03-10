@@ -8,6 +8,7 @@
 #######################################
 # Bonjour
 # vasy marche 
+# wewe
 
 import tkinter as tk
 import random
