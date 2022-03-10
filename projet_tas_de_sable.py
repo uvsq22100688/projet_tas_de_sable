@@ -6,9 +6,7 @@
 # Silia OUAKLI
 # https://github.com/uvsq22100688/projet_tas_de_sable
 #######################################
-# Bonjour
-# vasy marche 
-# wesh trkl
+
 import tkinter as tk
 import random
 import copy
