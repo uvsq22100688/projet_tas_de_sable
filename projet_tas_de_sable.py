@@ -3,7 +3,7 @@
 # Habib MABROUK
 # Aissam BERRAHMANE
 # Furkan YILMAZ
-# Sylia OUAKLI
+# Silia OUAKLI
 # https://github.com/uvsq22100688/projet_tas_de_sable
 #######################################
 # Bonjour
