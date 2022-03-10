@@ -6,10 +6,9 @@
 # Sylia OUAKLI
 # https://github.com/uvsq22100688/projet_tas_de_sable
 #######################################
+# Bonjour
 
 
-
- # salu cava
 import tkinter as tk
 import random
 import copy
@@ -184,7 +183,7 @@ bouton2 = tk.Button(racine, text = "pile centrée", command=identité)
 bouton3 = tk.Button(racine, text = "config aléatoire", command=config_aléatoire)
 bouton4 = tk.Button(racine, text = "max stable", command=max_stable)
 bouton5 = tk.Button(racine, text = "enregistrer", command=sauvegarde)
-bouton6 = tk.Button(racine, text = "afficher sauvagarde", command=affiche_sauvegarde)
+bouton6 = tk.Button(racine, text = "afficher sauvegarde", command=affiche_sauvegarde)
 bouton7 = tk.Button(racine, text = "stop", command = stop)
 bouton8 = tk.Button(racine,text = "identité", command = identité )
 bouton1.pack(side="top", fill = "x")
